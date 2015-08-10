@@ -1,0 +1,113 @@
+﻿
+/* part of this template comes from http://www.w3school.com.cn/index.html */
+html{
+    background-color:#E3E3E3;
+    font-size:14px; color:#000; 
+    min-width: 540px; 
+    max-width: 1024px; 
+    overflow:scroll; 
+    margin-left: auto; 
+    margin-right: auto; 
+    font-family:'微软雅黑';
+}
+a,a:hover{ text-decoration:none}
+
+pre{font-family:'微软雅黑'}
+.box{padding:10px; background-color:#fff; margin:10px 20px; border-radius:5px;}
+.layer_text{background-color:#fff; padding:20px;}
+.layer_text p{margin-bottom: 10px; text-indent: 2em; line-height: 23px;}
+.button{display:inline-block; *display:inline; *zoom:1; line-height:30px; padding:0 20px; background-color:#56B4DC; color:#fff; font-size:14px; border-radius:3px; cursor:pointer; font-weight:normal;}
+
+.juan{ padding:10px; text-align:left;}
+.juan p{line-height:23px;}
+.juan p a{font-size:14px;padding:0}
+.juanGo, .juanLu{display:inline-block; *display:inline; *zoom:1; margin-right:10px;  line-height:30px; padding:0 15px;}
+.juanGo{border:1px solid #F67600; background-color:#FFA100; color:#fff;}
+.juanGo:hover{background-color:#FFB12F; color:#fff;}
+.juanLu{border:1px solid #B3B3B3; padding:0 20px; background-color:#FDFDFD; color:#595959;}
+.juanLu:hover{border:1px solid #888;}
+
+h3{
+	font-size:16px;
+}
+.togglebody {
+	border-width: 1px;
+	border-color: #E3E3E3;
+	border-style: solid;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-moz-border-radius: 5px;
+	background-color: #FFF;
+	color: #000;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+.toggleheader{
+	margin: 0px;
+}
+
+.screenshots{
+	width:100%;
+	height:auto;
+	overflow-x:scroll; 
+	border:0;
+	white-space:nowrap;
+}
+
+.gametitle_table {
+    width:100%;
+	margin-top: 5px;
+    border:0;
+    font-size:16px;
+	background-color: #E3E3E3;
+}
+.gametitle_table tr {
+    margin: 0;
+}
+.gametitle_table_td1 {
+    margin:0;
+    padding:0;
+    width:50%;
+    text-align:left;
+    vertical-align:middle;
+}
+.gametitle_table_td2 {
+    margin:0;
+    padding:0;
+    width:20%;
+    text-align:right;
+    vertical-align:middle;
+    position: relative;
+}
+.gametitle_table_td3 {
+    margin:0;
+    padding:0;
+    width:50%;
+    text-align:right;
+    vertical-align:middle;
+}
+
+
+.row {
+  margin:0;
+}
+.row:before,
+.row:after {
+  display: table;
+  content: "";
+}
+.row:after {
+  clear: both;
+}
+.span8 {
+  float: left;
+  width: 75%;
+  margin-left: 5%;
+}
+.span4 {
+  float: right;
+  width: 15%;
+  margin-right: 5%;
+}
