@@ -1,0 +1,11 @@
+body {
+    padding-top: 50px;
+    background-color: #FFEFDB;
+    /*#FFEFDB*/
+}
+
+#jumbo {
+    padding-top: 0px;
+    text-align: center;
+    background-color: #FF9966;
+}

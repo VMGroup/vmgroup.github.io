@@ -1,0 +1,179 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>Vocaloid / MinecraftPE Group.</title>
+<link href="stylesheets/format.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="images/pymo.ico" type="image/x-icon"/>
+<link rel="Shortcut Icon" href="images/pymo.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon" sizes="144x144" href="images/pymo-icon-144.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="images/pymo-icon-114.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="images/pymo-icon-72.png" />
+<link rel="apple-touch-icon" href="images/pymo-icon-57.png" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=540, initial-scale=0.59, user-scalable=yes"/>
+</head>
+<script src="layer/jquery.min.js"></script>
+<script src="layer/layer.min.js"></script>
+<body>
+
+<div class="box" style="padding:0;
+background: url(images/index_idg.jpg) no-repeat right;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;">
+<pre>
+<div style="margin-left:50px; ">
+<div  align="left" style="text-shadow:white 1px 2px 1px;">
+<h2>VMGroup，一个刚刚起步的V家组织（吗？</h2>
+群内人数：35
+创建时间：2015-02-05
+使用系统：Symbian/Android/IOS/Windows/Ubuntu/Mac
+</div>
+<span class="button" style="background-color:orange;margin-top:20px;margin-left:0px;"><a href="install.html" style="color:#fff">资源下载</a></span><span class="button" style="background-color:#49AAEE;margin-left:20px;"><a href="http://shang.qq.com/wpa/qunwpa?idkey=4983c9660d096b933e5bfcbf2ea333ef0855eebd9a60f0842d27ccfc1d772093" target="_blank" style="color:#fff">加入V群</a></span>
+</div>
+</pre>
+</div>
+
+<div class="box">
+<h2>成员简介</h2>
+<!-- ------------------------------------------------------------------------------ -->
+  <div class="juan" id="JStest" onclick="show_download()">
+    您的浏览器禁用了JavaScript, 这可能导致按钮无法点击等问题。<br />
+    为了保障浏览效果，建议你开启JavaScript功能。
+  </div>
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- ------------------------------------------------------------------------------ -->
+  <span onclick="toggle_visibility('gameid1')" class="toggleheader">
+    <table class="gametitle_table"><tr><td class="gametitle_table_td1"><u>[军师]昨日的十七号</u></td><td class="gametitle_table_td3"> 入群日期：2015-02-05</td></tr></table>
+  </span>
+  <div style="display:none" id="gameid1" H="y" class="togglebody">
+    Github地址：<a href="https://github.com/yesterday17">https://github.com/yesterday17</a><br />
+    博客地址：<a href="http://yesterday17.github.io/Essay">http://yesterday17.github.io/Essay</a><br />
+    <h3>个人简介</h3>
+这是一个名字比较奇怪的人，平常叫他某昨就可以了~
+  </div>
+<!-- ------------------------------------------------------------------------------ -->
+  <span onclick="toggle_visibility('gameid2')" class="toggleheader">
+    <table class="gametitle_table"><tr><td class="gametitle_table_td1"><u>[群主]Pisces</u></td><td class="gametitle_table_td3"> 入群日期：2015-02-05</td></tr></table>
+  </span>
+  <div style="display:none" id="gameid2" H="y" class="togglebody">
+    Github地址：<a href="https://github.com/yesterday17">https://github.com/yesterday17</a><br />
+    博客地址：<a href="http://yesterday17.github.io/Essay">http://yesterday17.github.io/Essay</a><br />
+    <h3>个人简介</h3>
+
+  </div>
+<!-- ------------------------------------------------------------------------------ -->
+  <span onclick="toggle_visibility('gameid3')" class="toggleheader">
+    <table class="gametitle_table"><tr><td class="gametitle_table_td1"><u>[柯朱]柯朱尼玛</u></td><td class="gametitle_table_td3"> 入群日期：2015-02-05</td></tr></table>
+  </span>
+  <div style="display:none" id="gameid3" H="y" class="togglebody">
+    Github地址：<a href="https://github.com/yesterday17">https://github.com/yesterday17</a><br />
+    博客地址：<a href="http://yesterday17.github.io/Essay">http://yesterday17.github.io/Essay</a><br />
+    <h3>个人简介</h3>
+
+  </div>
+<!-- ------------------------------------------------------------------------------ -->
+</div>
+
+
+<div class="box" style="text-align:center;padding:5px;">
+<a href="https://github.com/VMGroup">Github地址</a>
+<a href="faq.html">常见问题</a>
+<a href="changelog.html">成长历程</a>
+<a href="javascript:;" id="about">关于VMGroup</a>
+<div style="font-size:12px;">
+    <script language="JavaScript">
+        var current_year=new Date().getFullYear();
+        document.write("Copyright ? Yesterday17 2015-"+current_year+"<br />页面最后更新: " + document.lastModified)</script>
+    <a href="http://gostats.com"><img alt="website analysis" src="http://c4.gostats.com/bin/count/a_382390/t_5/i_1/counter.png" style="border-width:0" /></a>
+</div>
+</div> 
+
+<script>
+//1. 页面所有内容保留版权。
+var max_game_num=60;
+document.getElementById("JStest").innerHTML = '说明：<br />1. 本列表中的所有介绍均由本人/军师所写，未经许可禁止转载。<br />2. VMGroup所有成员默认都已经过许可。<br />3. 要资源的同学们可以点击资源下载，所有内容均来自互联网。';
+var click_counter=0;
+var counter_threshold=9;
+
+(function(){
+$('#about').on('click',function(){
+	var html = '<div class="juan"><h2>关于VMGroup</h2><p>VMGroup (Vocaloid / MinecraftPE Group) 是一个有扒谱有技术有音源有歌词有正版的V家组织，存活于带有显著闲聊特质的VOCALOID讨论群。<br />VMGroup是由VOCALOID学习制作群内一部分人的总称。VMGroup长期在VOCALOID学习制作群学(xian)习(liao)，欢迎任何人加入我们的讨论。<br />如果出现链接被吞，请到<a href="http://shang.qq.com/wpa/qunwpa?idkey=4983c9660d096b933e5bfcbf2ea333ef0855eebd9a60f0842d27ccfc1d772093">这里反馈</a>。<br />或者百度帖吧<a href="http://msg.baidu.com/msg/writing?ct=21&cm=1&tn=bmSendMessage&un=昨日的十七号">私信联系某昨</a></p></div>';
+
+	var i = $.layer({
+		type: 1,
+		title: ['',false],
+		closeBtn: ['',true],
+		border : [5, 0.5, '#666', true],
+		offset: ['50px',''],
+		move: ['.juanmove', true],
+		area: ['400px','auto'],
+		shadeClose : true,
+		page: {
+			html: html
+		}
+	});
+});
+
+
+})();
+
+function set_visibility(id) {
+  var e = document.getElementById(id);
+  e.style.display = 'block';
+}
+function unset_visibility(id) {
+  var e = document.getElementById(id);
+  e.style.display = 'none';
+}
+function toggle_visibility(id) {
+  for (var i=1;i<=max_game_num;i++)
+  {
+    if (id=="gameid"+i){
+      var e = document.getElementById(id);
+      if (e.style.display == 'none'){
+        e.style.display = 'block';
+        for ( var  j = 0 ; j < e.childNodes.length; j++ ){
+          var  f =  e.childNodes[j];
+          //lazy load the images in div
+          if (f.attributes && f.getAttribute("class")=="screenshots"){
+            for ( var  k = 0 ; k < f.childNodes.length; k++ ){
+              var  g =  f.childNodes[k];
+              if (g.tagName && g.tagName=="IMG")
+                g.setAttribute("src",g.getAttribute("data-original"));
+            }
+          }
+          //hide the download link of H games
+//          if (f.attributes && f.getAttribute("class")=="dllink"){
+//            if (e.getAttribute("H")=="y" && click_counter<counter_threshold){
+//              f.style.display = "none";
+//            }
+//            else{
+//              f.style.display = "block";
+//            }
+//          }
+        }
+      }
+      else
+        e.style.display = 'none';
+    }
+    else
+      unset_visibility("gameid"+i);
+  }
+}
+function show_download() {
+  if (click_counter<counter_threshold)
+  {
+    click_counter++;
+  }
+  else
+  {
+    document.getElementById("JStest").innerHTML = '<p>如果链接有失效或描述不准确的情况，请在<a href="http://shang.qq.com/wpa/qunwpa?idkey=4983c9660d096b933e5bfcbf2ea333ef0855eebd9a60f0842d27ccfc1d772093">这里通知</a>。</p>';
+  }
+}
+
+
+</script>
+</body>
+</html>
