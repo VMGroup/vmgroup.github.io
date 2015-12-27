@@ -1,22 +1,23 @@
 (function (window) {
-  var FileItem = function (filename, user, user_id, date, size, prev_downloads) {
+  var FileItem = function (filename, user, user_id, date, size, prev_downloads, opt_serverfile) {
     this.filename = filename;
     this.user = user;
     this.user_id = user_id;
     this.date = date;
     this.size = size;
     // Omitted prev_downloads
+    this.server_file = opt_serverfile || filename;
   };
   var file_list = [
-    new FileItem('luangao.mp3', 'Pisces', '1786762946', '2015-09-09 09:09', '1.0 MB', 1),
-    new FileItem('luangao.mp3', 'Pisces', '1786762946', '2015-09-09 09:09', '1.0 MB', 1),
-    new FileItem('luangao.mp3', 'Pisces', '1786762946', '2015-09-09 09:09', '1.0 MB', 1)
+    new FileItem('luangao.mp3', 'Pisces', '1786762946', '2015-09-09 09:09', '1.0 MB', 1, ''),
+    new FileItem('luangao.mp3', 'Pisces', '1786762946', '2015-09-09 09:09', '1.0 MB', 1, 'luangao-1.mp3'),
+    new FileItem('luangao.mp3', 'Pisces', '1786762946', '2015-09-09 09:09', '1.0 MB', 1, 'luangao-2.mp3')
   ];
   var container = $('#list-container');
   for (var i = 0; i < file_list.length; ++i) {
     var item = $('<ul class="list-group container-fluid">');
     var link = $('<a class="file-list-filename list-group-item col-md-5 col-xs-12">')
-      .attr('href', 'share_archive/' + file_list[i].filename)
+      .attr('href', 'share_archive/' + file_list[i].server_file)
       .text(file_list[i].filename);
     item.append(link);
     item.append($('<div class="file-list-info list-group-item col-md-3 col-xs-5">')
