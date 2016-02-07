@@ -18,13 +18,43 @@
       <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        .all-hidden { display: none; }
+        .ai-status-disp { font-size: 1.5em; font-weight: bold; }
+        #ai-status-nickname { font-family: 'Courier New', monospace; font-weight: bold; }
+        #ai-status-uid { padding-left: 1em; font-size: 0.5em; color: #777777; }
+        .icon-spinning { /* 从 Font Awesome 搬运 */
+            -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear;
+        }
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+    </style>
 </head>
 
 
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -32,14 +62,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">VOCALOID学习制作群</a>
+                <a class="navbar-brand" href="index.html">VOCALOID学习制作群</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="resources.html">资源</a></li>
+                    <li><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#">资源</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成员简介 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -87,17 +116,37 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="jumbotron" id="jumbo">
-        <div class="container">
-            <br />
-            <h1>Vocaloid学习制作群</h1>
-            <p>一个刚刚起步的V家小群（吗？</p>
-            <p><a class="btn btn-primary btn-lg" href="http://shang.qq.com/wpa/qunwpa?idkey=4983c9660d096b933e5bfcbf2ea333ef0855eebd9a60f0842d27ccfc1d772093" role="button">进来问好（大雾</a></p>
+    <div class="page-header">
+        <h1 style="padding-left:50px">（AI）Capricorna   <small>状态页面</small></h1>
+    </div>
+
+    <div id='ai-status-up-disp' class="all-hidden panel panel-default">
+        <div id='status-disp-up' class="ai-status-disp list-group-item list-group-item-success">AI 状态：UP</div>
+        <div class="panel-body" style="background:#FFDDAA">
+            <h1 id='ai-status-nickname'>CAP</h1>
+            <p id='ai-status-sig'>asdasdasd</p>
+            <hr style='border-color: #CC9977'>
+            <p><strong>总发送消息数量：</strong><span id='sent-count'>2015</span></p>
+            <p><strong>上次发送消息时间：</strong><span id='last-sent'>2015</span></p>
         </div>
     </div>
 
+    <div id='ai-status-down-disp' class="all-hidden panel panel-default">
+        <div id='status-disp-down' class="ai-status-disp list-group-item list-group-item-danger">AI 状态：DOWN</div>
+        <div class="panel-body" style="background:#FFDDAA">
+            <p>桶穴，卧们的 AI 坏掉了，卧魅乏思考！</p>
+            <p id='ai-status-down-desc'></p>
+        </div>
+    </div>
 
-
+    <div id='ai-status-loading-disp' class="panel panel-default">
+        <div id='status-disp-loading' class="ai-status-disp list-group-item list-group-item-warning">AI 状态：LOADING...
+            <span class="glyphicon glyphicon-repeat icon-spinning"></span>
+        </div>
+        <div class="panel-body" style="background:#FFDDAA">
+            <p>努力加载ing。。请耐心等待～（当然也有可能是服务器挂了）</p>
+        </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
@@ -107,6 +156,30 @@
     </script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        // 安利一篇blog
+        // http://qiita.com/gaogao_9/items/ec2b867d6941173fd0b1
+        // ... $(document).ready(...)?
+        window.addEventListener('load', function () {
+            $.get('http://tdt-connect-pisces000221.c9users.io/', function (data, status) {
+                console.log(data);
+                $('#ai-status-loading-disp').addClass('all-hidden');
+                if (data && data.timestamp >= Date.now() / 1000 - 30) {
+                    $('#ai-status-up-disp').removeClass('all-hidden');
+                    $('#ai-status-nickname').html(data.self_info.nick +
+                        "<span id='ai-status-uid'>(" + data.self_info.account + ")</span>");
+                    $('#ai-status-sig').text(data.self_info.lnick);
+                    $('#sent-count').text(data.messages_sent.toString());
+                    $('#last-sent').text((new Date(data.last_sent_time)).toLocaleString());
+                } else {
+                    $('#ai-status-down-disp').removeClass('all-hidden');
+                    if (data)
+                        $('#ai-status-down-desc').html('服务器还在，但是程序已挂 T^T<br><strong>上次存活时间：' + (new Date(data.timestamp * 1000)).toLocaleString()) + '</strong>';
+                    else $('#ai-status-down-desc').html('似乎是服务器挂了 T^T');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
