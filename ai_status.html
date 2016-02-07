@@ -170,7 +170,7 @@
                         "<span id='ai-status-uid'>(" + data.self_info.account + ")</span>");
                     $('#ai-status-sig').text(data.self_info.lnick);
                     $('#sent-count').text(data.messages_sent.toString());
-                    $('#last-sent').text((new Date(data.last_sent_time)).toLocaleString());
+                    $('#last-sent').text((new Date(data.last_sent_time * 1000)).toLocaleString());
                 } else {
                     $('#ai-status-down-disp').removeClass('all-hidden');
                     if (data)
