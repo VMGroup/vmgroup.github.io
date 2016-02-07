@@ -161,8 +161,10 @@
         // 安利一篇blog
         // http://qiita.com/gaogao_9/items/ec2b867d6941173fd0b1
         // ... $(document).ready(...)?
+        var loaded = false;
         window.addEventListener('load', function () {
             $.get('http://tdt-connect-pisces000221.c9users.io/', function (data, status) {
+                loaded = true;
                 console.log(data);
                 $('#ai-status-loading-disp').addClass('all-hidden');
                 if (data && data.timestamp >= Date.now() / 1000 - 30) {
@@ -181,6 +183,7 @@
             });
         });
         setTimeout(function () {
+            if (loaded) return;
             $('#ai-status-loading-disp').addClass('all-hidden');
             $('#ai-status-down-disp').removeClass('all-hidden');
             $('#ai-status-down-desc').html('似乎是服务器挂了 T^T（Connection timed out）');
