@@ -135,6 +135,7 @@
         <div id='status-disp-down' class="ai-status-disp list-group-item list-group-item-danger">AI 状态：DOWN</div>
         <div class="panel-body" style="background:#FFDDAA">
             <p>桶穴，卧们的 AI 坏掉了，卧魅乏思考！</p>
+            <hr style='border-color: #CC9977'>
             <p id='ai-status-down-desc'></p>
         </div>
     </div>
@@ -179,6 +180,11 @@
                 }
             });
         });
+        setTimeout(function () {
+            $('#ai-status-loading-disp').addClass('all-hidden');
+            $('#ai-status-down-disp').removeClass('all-hidden');
+            $('#ai-status-down-desc').html('似乎是服务器挂了 T^T（Connection timed out）');
+        }, 10000);
     </script>
 </body>
 
