@@ -121,8 +121,14 @@
     </div>
 
     <div id='ai-status-up-disp' class="all-hidden panel panel-default">
-        <div id='status-disp-up' class="ai-status-disp list-group-item list-group-item-success">AI 状态：UP</div>
-        <div id='status-disp-muted' class="ai-status-disp list-group-item active all-hidden">AI 状态：MUTED</div>
+        <div id='status-disp-up' class="ai-status-disp list-group-item list-group-item-success">
+            AI 状态：UP
+            <span id='icon-status-loading-up' class="all-hidden glyphicon glyphicon-repeat icon-spinning"></span>
+        </div>
+        <div id='status-disp-muted' class="ai-status-disp list-group-item active all-hidden">
+            AI 状态：MUTED
+            <span id='icon-status-loading-muted' class="all-hidden glyphicon glyphicon-repeat icon-spinning"></span>
+        </div>
         <div class="panel-body" style="background:#FFDDAA">
             <h1 id='ai-status-nickname'>CAP</h1>
             <p id='ai-status-sig'>asdasdasd</p>
@@ -130,6 +136,11 @@
             <p><strong>总发送消息数量：</strong><span id='sent-count'>2015</span></p>
             <p><strong>上次冒泡时间：</strong><span id='last-sent'>2015</span></p>
             <p><strong>数据更新时间：</strong><span id='updated-at'>2015</span></p>
+            <p></p>
+            <p id='p-mute-unmute'>
+                <span id='txt-mute-unmute'></span><br>
+                → <input id='btn-mute-unmute' class='btn btn-default' type='button' value=''>
+            </p>
         </div>
     </div>
 
@@ -164,10 +175,12 @@
         // http://qiita.com/gaogao_9/items/ec2b867d6941173fd0b1
         // ... $(document).ready(...)?
         var loaded = false;
+        window.ai_status_data = null;
         window.addEventListener('load', function () {
             $.get('http://tdt-connect-pisces000221.c9users.io/', function (data, status) {
                 loaded = true;
                 console.log(data);
+                window.ai_status_data = data;
                 $('#ai-status-loading-disp').addClass('all-hidden');
                 if (data && data.timestamp >= Date.now() / 1000 - 30) {
                     $('#ai-status-up-disp').removeClass('all-hidden');
@@ -180,6 +193,11 @@
                     if (data.is_muted) {
                         $('#status-disp-up').addClass('all-hidden');
                         $('#status-disp-muted').removeClass('all-hidden');
+                        $('#txt-mute-unmute').text('AI 复活吧～');
+                        $('#btn-mute-unmute').attr('value', '取消静音').addClass('btn-success');
+                    } else {
+                        $('#txt-mute-unmute').text('出意外啦！！');
+                        $('#btn-mute-unmute').attr('value', '静音').addClass('btn-primary');
                     }
                 } else {
                     $('#ai-status-down-disp').removeClass('all-hidden');
@@ -189,6 +207,22 @@
                     else $('#ai-status-down-desc').html('似乎是服务器挂了 T^T');
                 }
             });
+        });
+        $('#btn-mute-unmute').click(function () {
+            $('#p-mute-unmute').addClass('all-hidden');
+            if (window.ai_status_data.is_muted) {
+                $('#icon-status-loading-muted').removeClass('all-hidden');
+                $.get('http://tdt-connect-pisces000221.c9users.io/unmute', function () {
+                    $('#status-disp-up').removeClass('all-hidden');
+                    $('#status-disp-muted').addClass('all-hidden');
+                });
+            } else {
+                $('#icon-status-loading-up').removeClass('all-hidden');
+                $.get('http://tdt-connect-pisces000221.c9users.io/mute', function () {
+                    $('#status-disp-up').addClass('all-hidden');
+                    $('#status-disp-muted').removeClass('all-hidden');
+                });
+            }
         });
         setTimeout(function () {
             if (loaded) return;
