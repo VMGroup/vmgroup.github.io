@@ -122,12 +122,14 @@
 
     <div id='ai-status-up-disp' class="all-hidden panel panel-default">
         <div id='status-disp-up' class="ai-status-disp list-group-item list-group-item-success">AI 状态：UP</div>
+        <div id='status-disp-muted' class="ai-status-disp list-group-item active all-hidden">AI 状态：MUTED</div>
         <div class="panel-body" style="background:#FFDDAA">
             <h1 id='ai-status-nickname'>CAP</h1>
             <p id='ai-status-sig'>asdasdasd</p>
             <hr style='border-color: #CC9977'>
             <p><strong>总发送消息数量：</strong><span id='sent-count'>2015</span></p>
-            <p><strong>上次发送消息时间：</strong><span id='last-sent'>2015</span></p>
+            <p><strong>上次冒泡时间：</strong><span id='last-sent'>2015</span></p>
+            <p><strong>数据更新时间：</strong><span id='updated-at'>2015</span></p>
         </div>
     </div>
 
@@ -174,10 +176,16 @@
                     $('#ai-status-sig').text(data.self_info.lnick);
                     $('#sent-count').text(data.messages_sent.toString());
                     $('#last-sent').text((new Date(data.last_sent_time * 1000)).toLocaleString());
+                    $('#updated-at').text((new Date(data.timestamp * 1000)).toLocaleString());
+                    if (data.is_muted) {
+                        $('#status-disp-up').addClass('all-hidden');
+                        $('#status-disp-muted').removeClass('all-hidden');
+                    }
                 } else {
                     $('#ai-status-down-disp').removeClass('all-hidden');
                     if (data)
-                        $('#ai-status-down-desc').html('服务器还在，但是程序已挂 T^T<br><strong>上次存活时间：' + (new Date(data.timestamp * 1000)).toLocaleString()) + '</strong>';
+                        $('#ai-status-down-desc').html('服务器还在，但是程序已挂 T^T')
+                            .after('<p><strong>上次存活时间：</strong>' + (new Date(data.timestamp * 1000)).toLocaleString() + '</p>');
                     else $('#ai-status-down-desc').html('似乎是服务器挂了 T^T');
                 }
             });
