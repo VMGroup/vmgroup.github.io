@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Vocaloid学习制作群 - 一个刚刚起步的V家小群</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/pages/index.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .all-hidden { display: none; }
+        .ai-status-disp { font-size: 1.5em; font-weight: bold; }
+        #ai-status-nickname { font-family: 'Courier New', monospace; font-weight: bold; }
+        #ai-status-uid { padding-left: 1em; font-size: 0.5em; color: #777777; }
+        .icon-spinning { /* 从 Font Awesome 搬运 */
+            -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear;
+        }
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">VOCALOID学习制作群</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="resources.html">资源</a></li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成员简介 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li class="dropdown-header">群主</li>
+                            <li><a href="members/index.html">想要假装自己不是群主的某昨</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown-header">管理员</li>
+                            <li><a href="#">小P</a></li>
+                            <li class='active'><a href="#">（AI）Capricorna</a></li>
+                            <li><a href="#">Something else here</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown-header">活跃成员</li>
+                            <li><a href="#">One more separated link</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="尚未开发完毕">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/vmgroup">Github主页</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我群的表情包</a></li>
+                            <li><a href="#">我大V群的日常（连载）</a></li>
+                            <li><a href="portalold/index.html">回到旧版</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="http://yesterday17.aliapp.com">某昨的迷の小屋</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="page-header">
+        <h1 style="padding-left:50px">（AI）Capricorna   <small>状态页面</small></h1>
+    </div>
+
+    <div id='ai-status-up-disp' class="all-hidden panel panel-default">
+        <div id='status-disp-up' class="ai-status-disp list-group-item list-group-item-success">
+            AI 状态：UP
+            <span id='icon-status-loading-up' class="all-hidden glyphicon glyphicon-repeat icon-spinning"></span>
+        </div>
+        <div id='status-disp-muted' class="ai-status-disp list-group-item active all-hidden">
+            AI 状态：MUTED
+            <span id='icon-status-loading-muted' class="all-hidden glyphicon glyphicon-repeat icon-spinning"></span>
+        </div>
+        <div class="panel-body" style="background:#FFDDAA">
+            <h1 id='ai-status-nickname'>CAP</h1>
+            <p id='ai-status-sig'>asdasdasd</p>
+            <hr style='border-color: #CC9977'>
+            <p><strong>总发送消息数量：</strong><span id='sent-count'>2015</span></p>
+            <p><strong>上次冒泡时间：</strong><span id='last-sent'>2015</span></p>
+            <p><strong>数据更新时间：</strong><span id='updated-at'>2015</span></p>
+            <p></p>
+            <p id='p-mute-unmute'>
+                <span id='txt-mute-unmute'></span><br>
+                → <input id='btn-mute-unmute' class='btn btn-default' type='button' value=''>
+            </p>
+        </div>
+    </div>
+
+    <div id='ai-status-down-disp' class="all-hidden panel panel-default">
+        <div id='status-disp-down' class="ai-status-disp list-group-item list-group-item-danger">AI 状态：DOWN</div>
+        <div class="panel-body" style="background:#FFDDAA">
+            <p>桶穴，卧们的 AI 坏掉了，卧魅乏思考！</p>
+            <hr style='border-color: #CC9977'>
+            <p id='ai-status-down-desc'></p>
+        </div>
+    </div>
+
+    <div id='ai-status-loading-disp' class="panel panel-default">
+        <div id='status-disp-loading' class="ai-status-disp list-group-item list-group-item-warning">AI 状态：LOADING...
+            <span class="glyphicon glyphicon-repeat icon-spinning"></span>
+        </div>
+        <div class="panel-body" style="background:#FFDDAA">
+            <p>努力加载ing。。请耐心等待～</p>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        !window.jQuery && document.write('<script src="js/jquery-2.0.3.min.js"><\/script>');
+
+    </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        // 安利一篇blog
+        // http://qiita.com/gaogao_9/items/ec2b867d6941173fd0b1
+        // ... $(document).ready(...)?
+        var loaded = false;
+        window.ai_status_data = null;
+        window.addEventListener('load', function () {
+            $.get('http://tdt-connect-pisces000221.c9users.io/', function (data, status) {
+                loaded = true;
+                console.log(data);
+                window.ai_status_data = data;
+                $('#ai-status-loading-disp').addClass('all-hidden');
+                if (data && data.timestamp >= Date.now() / 1000 - 30) {
+                    $('#ai-status-up-disp').removeClass('all-hidden');
+                    $('#ai-status-nickname').html(data.self_info.nick +
+                        "<span id='ai-status-uid'>(" + data.self_info.account + ")</span>");
+                    $('#ai-status-sig').text(data.self_info.lnick);
+                    $('#sent-count').text(data.messages_sent.toString());
+                    $('#last-sent').text((new Date(data.last_sent_time * 1000)).toLocaleString());
+                    $('#updated-at').text((new Date(data.timestamp * 1000)).toLocaleString());
+                    if (data.is_muted) {
+                        $('#status-disp-up').addClass('all-hidden');
+                        $('#status-disp-muted').removeClass('all-hidden');
+                        $('#txt-mute-unmute').text('AI 复活吧～');
+                        $('#btn-mute-unmute').attr('value', '取消静音').addClass('btn-success');
+                    } else {
+                        $('#txt-mute-unmute').text('出意外啦！！');
+                        $('#btn-mute-unmute').attr('value', '静音').addClass('btn-primary');
+                    }
+                } else {
+                    $('#ai-status-down-disp').removeClass('all-hidden');
+                    if (data)
+                        $('#ai-status-down-desc').html('服务器还在，但是程序已挂 T^T')
+                            .after('<p><strong>上次存活时间：</strong>' + (new Date(data.timestamp * 1000)).toLocaleString() + '</p>');
+                    else $('#ai-status-down-desc').html('似乎是服务器挂了 T^T');
+                }
+            });
+        });
+        $('#btn-mute-unmute').click(function () {
+            $('#p-mute-unmute').addClass('all-hidden');
+            if (window.ai_status_data.is_muted) {
+                $('#icon-status-loading-muted').removeClass('all-hidden');
+                $.get('http://tdt-connect-pisces000221.c9users.io/unmute', function () {
+                    $('#status-disp-up').removeClass('all-hidden');
+                    $('#status-disp-muted').addClass('all-hidden');
+                });
+            } else {
+                $('#icon-status-loading-up').removeClass('all-hidden');
+                $.get('http://tdt-connect-pisces000221.c9users.io/mute', function () {
+                    $('#status-disp-up').addClass('all-hidden');
+                    $('#status-disp-muted').removeClass('all-hidden');
+                });
+            }
+        });
+        setTimeout(function () {
+            if (loaded) return;
+            $('#ai-status-loading-disp').addClass('all-hidden');
+            $('#ai-status-down-disp').removeClass('all-hidden');
+            $('#ai-status-down-desc').html('似乎是服务器挂了 T^T（Connection timed out）');
+        }, 10000);
+    </script>
+</body>
+
+</html>
