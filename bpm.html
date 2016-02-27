@@ -95,8 +95,9 @@
     <div id='panel-instructions' class="panel panel-default alert-" role='alert'>
       <div class="panel-body" style="background:#FFEECC">
         <button type="button" class="close" aria-label="Close" id='btn-close-instructions' style='font-size: 3em;'><span aria-hidden="true">&times;</span></button>
-        Version 0.97.3 (2016.02.23)
+        Version 0.97.4 (2016.02.27)
         <h3>使用说明（戳右边可以关闭）</h3>
+        写得很乱的样子……玩玩大概就知道了吧-_-#<br><br>
         <ol>
           <li>掏出普通的耳机，普通地按下播放键，普通地打开这个页面√</li>
           <li>跟着普通的节奏，在普通的动次打次中交替按下“Z”/“X”键。。。没错这是osu!（当然不交替也可以～）</li>
@@ -104,8 +105,12 @@
           <li>分析结果将显示在框中，拖动选中其中一段折线可以单独查看对应段的速度（以及coder对这个结果的自信程度！）</li>
         </ol>
         <ul>
-          <li>多按了不要方啦～按 Backspace 撤销上次的记录。这会产生一个巨大的时间跳跃，但是好心的coder会忽略的啦～</li>
-          <li>少按或者节奏乱了也都请保持淡定。。撤销前几次乱的记录，休整过后继续</li>
+          <!--
+            <li>多按了不要方啦～按 Backspace 撤销上次的记录。不过时间间隔并不会重设。</li>
+            <li>Space 键重设时间间隔——下次记录的时间间隔将以这次 Space 为准</li>
+          -->
+          <li>节奏乱了？淡定。。淡定。。Backspace 去掉乱的记录，然后继续。第一拍按 Space 而不是“Z”/“X”。</li>
+          <small>… <kbd>Z</kbd> <kbd>X</kbd> <kbd>Z</kbd> <kbd>X</kbd>（乱）<kbd>←</kbd> <kbd>←</kbd> <kbd>←</kbd>（休整）<kbd>Space</kbd> <kbd>Z</kbd> <kbd>X</kbd> <kbd>Z</kbd> …</small>
           <li>计划加入爪机支持。。。不知道什么时候有空呢</li>
           <li>抓住野生的 bug 到群里吼一声就可以啦 求不调戏coder (つД`)ノ &nbsp;算法实现细节戳 → <a href='https://github.com/VMGroup/BPM'>这里</a></li>
         </ul>
@@ -128,11 +133,11 @@
         document.getElementById('panel-instructions').classList.add('all-hidden');
         document.getElementById('more-heading').classList.add('all-hidden');
       });
-      var meter = bpm.create('bpm-canvas');
-      var meter = bpm.create('bpm-canvas');
+      var meter = bpm('bpm-canvas');
       window.addEventListener('keydown', function (e) {
         if (e.keyCode === 90 || e.keyCode === 88) meter.pat();
         else if (e.keyCode === 8) meter.undo();
+        else if (e.keyCode === 32) meter.break();
         else if (e.keyCode === 13) meter.finish();
       });
     </script>
