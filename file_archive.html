@@ -22,7 +22,8 @@
         .file-list-filename { font-weight: bold; }
         .file-list-info { background: #eee; }
         #list-container { margin: 0px 15px; padding: 0px; }
-        .less-padding { padding: 0px 7px; }
+        .list-group.container-fluid { padding-right: 0px; }
+        .panel > .list-group:first-child .list-group-item:first-child { border-top: 1px solid #ddd; }
     </style>
 </head>
 
@@ -101,10 +102,10 @@
     </div>
 
     <div class='container-fluid' style='width: 100%'>
-        <div class='less-padding col-md-5 col-xs-12'>文件名</div>
-        <div class='less-padding col-md-3 col-xs-5'>上传者</div>
-        <div class='less-padding col-md-2 col-xs-4'>日期</div>
-        <div class='less-padding col-md-2 col-xs-3'>文件大小</div>
+        <div class='col-md-5 col-xs-12'>文件名</div>
+        <div class='col-md-3 col-xs-5'>上传者</div>
+        <div class='col-md-2 col-xs-4'>日期</div>
+        <div class='col-md-2 col-xs-3'>文件大小</div>
     </div>
     <div id='list-container' class="panel panel-default">
     </div>
