@@ -24,6 +24,7 @@
         #list-container { margin: 0px 15px; padding: 0px; }
         .list-group.container-fluid { padding-right: 0px; }
         .panel > .list-group:first-child .list-group-item:first-child { border-top: 1px solid #ddd; }
+        #bottom-pagination-container { text-align: center; }
     </style>
 </head>
 
@@ -108,6 +109,12 @@
         <div class='col-md-2 col-xs-3'>文件大小</div>
     </div>
     <div id='list-container' class="panel panel-default">
+    </div>
+    <div id='bottom-pagination-container' class='container-fluid'>
+      <div id='bottom-pagination' class='pagination'>
+        <li id='pagi-prev' class='disabled'><a href='javascript:pagi_prev();'>←</a></li>
+        <li id='pagi-next' class='disabled'><a href='javascript:pagi_next();'>→</a></li>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
