@@ -10,6 +10,11 @@
   };
   var share_archive_dir = 'share_archive/';
   var pagi_items_per_page = 2;
+  var _02d = function (x) { return (x >= 10 ? '' : '0') + x.toString(); };
+  var get_date_str = function (epoch) {
+    var d = new Date(epoch);
+    return d.getFullYear() + '-' + _02d(d.getMonth() + 1) + '-' + _02d(d.getDate()) + ' ' + _02d(d.getHours()) + ':' + _02d(d.getMinutes());
+  };
   var get_size_str = function (bytes) {
     if (bytes >= 1024 * 1024 * 1024) {
       return (bytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
@@ -31,7 +36,7 @@
         server_file: d[i].server_file || d[i].file_name,
         user_id: d[i].user_id,
         user_name: d[0][d[i].user_id],
-        date: (new Date(d[i].date)).toISOString(),
+        date: get_date_str(d[i].date),
         size: get_size_str(d[i].size)
       };
     }
