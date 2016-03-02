@@ -8,7 +8,6 @@
     // Omitted prev_downloads
     this.server_file = opt_serverfile || filename;
   };
-  var share_archive_dir = 'http://pan.baidu.com/s/1c0PQnrM#path=%252FVocaloid%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2588%25B6%25E4%25BD%259C%25E7%25BE%25A4%25E6%2596%2587%25E4%25BB%25B6%25E5%25BD%2592%25E6%25A1%25A3%252F';
   var pagi_items_per_page = 20;
   var _02d = function (x) { return (x >= 10 ? '' : '0') + x.toString(); };
   var get_date_str = function (epoch) {
@@ -26,10 +25,10 @@
       return bytes.toString() + ' Byte' + (bytes === 1 ? '' : 's');
     }
   };
-  var encode_path_uri = function (path) {
+  var uri_for_archive = function (path) {
     var s = encodeURI(path);
     s = s.replace('/', '%2F');
-    return encodeURI(s);
+    return 'http://pan.baidu.com/s/1c0PQnrM#path=%252FVocaloid%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2588%25B6%25E4%25BD%259C%25E7%25BE%25A4%25E6%2596%2587%25E4%25BB%25B6%25E5%25BD%2592%25E6%25A1%25A3%252F' + encodeURI(s);
   };
   var process_list = function (d) {
     var ret = [];
@@ -79,7 +78,7 @@
     for (var i = pagi_items_per_page * pagi_page; i < Math.min(file_list.length, pagi_items_per_page * (pagi_page + 1)); ++i) {
       var item = $('<ul class="list-group container-fluid">');
       var link = $('<a class="file-list-filename list-group-item col-md-5 col-xs-12">')
-        .attr('href', share_archive_dir + encode_path_uri(file_list[i].server_file || file_list[i].file_name))
+        .attr('href', uri_for_archive(file_list[i].server_file || file_list[i].file_name))
         .text(file_list[i].file_name);
       item.append(link);
       item.append($('<div class="file-list-info list-group-item col-md-3 col-xs-5">')
