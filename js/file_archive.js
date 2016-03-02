@@ -13,7 +13,7 @@
   var _02d = function (x) { return (x >= 10 ? '' : '0') + x.toString(); };
   var get_date_str = function (epoch) {
     var d = new Date(epoch);
-    return d.getFullYear() + '-' + _02d(d.getMonth() + 1) + '-' + _02d(d.getDate()) + ' ' + _02d(d.getHours()) + ':' + _02d(d.getMinutes());
+    return d.getFullYear() + '-' + _02d(d.getMonth() + 1) + '-' + _02d(d.getDate()) + '<span class="minor-disp">' + _02d(d.getHours()) + ':' + _02d(d.getMinutes()) + '</span>';
   };
   var get_size_str = function (bytes) {
     if (bytes >= 1024 * 1024 * 1024) {
@@ -83,8 +83,8 @@
         .text(file_list[i].file_name);
       item.append(link);
       item.append($('<div class="file-list-info list-group-item col-md-3 col-xs-5">')
-        .text(file_list[i].user_name + ' (' + file_list[i].user_id + ')'));
-      item.append($('<div class="file-list-info list-group-item col-md-2 col-xs-4">').text(file_list[i].date));
+        .html(file_list[i].user_name));
+      item.append($('<div class="file-list-info list-group-item col-md-2 col-xs-4">').html(file_list[i].date));
       item.append($('<div class="file-list-info list-group-item col-md-2 col-xs-3">').text(file_list[i].size));
       container.append(item);
     }
