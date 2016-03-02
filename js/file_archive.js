@@ -34,17 +34,17 @@
   var process_list = function (d) {
     var ret = [];
     for (var i = 1; i < d.length; ++i) {
-      // TODO: 按时间降序排序
-      // 现在只是简单地 reverse 了一下 -, -
-      ret[d.length - i - 1] = {
+      ret[i] = {
         file_name: d[i].file_name,
         server_file: d[i].server_file || d[i].file_name,
         user_id: d[i].user_id,
         user_name: d[0][d[i].user_id],
+        date_val: d[i].date,
         date: get_date_str(d[i].date),
         size: get_size_str(d[i].size)
       };
     }
+    ret.sort(function (a, b) { return b.date_val - a.date_val; });
     return ret;
   };
   // JSON 加载之后会被覆盖。。这里只是声明一下 - -
