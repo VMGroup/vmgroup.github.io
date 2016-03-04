@@ -27,6 +27,31 @@
         .panel > .list-group:first-child .list-group-item:first-child { border-top: 1px solid #ddd; }
         .minor-disp { margin-left: 0.5em; color: #aaa; }
         #bottom-pagination-container { text-align: center; }
+
+        .icon-spinning { /* 从 Font Awesome 搬运 */
+            -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear;
+        }
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
     </style>
 </head>
 
@@ -112,6 +137,10 @@
         <div class='col-md-2 col-xs-3'>文件大小</div>
     </div>
     <div id='list-container' class="panel panel-default">
+      <div id='loading-disp' style='padding: 1em; text-align: center'>
+        <span id='icon-status-loading-up' class="glyphicon glyphicon-repeat icon-spinning"></span>
+        努力加载ing &gt; &lt;
+      </div>
     </div>
     <div id='bottom-pagination-container' class='container-fluid'>
       <div id='bottom-pagination' class='pagination'>
